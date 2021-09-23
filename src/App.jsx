@@ -184,7 +184,7 @@ function App() {
         ></input>
       </div>
 
-      <ul>
+      <div className="data-box">
         {Array.from(word).map((w, index) => {
           return (
             <li key={index}>
@@ -214,8 +214,8 @@ function App() {
               })}
             </li>
           );
-        })}{' '}
-      </ul>
+        })}
+      </div>
     </div>
   );
 }
