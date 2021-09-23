@@ -2,11 +2,13 @@ import React from 'react';
 
 const Synonim = (props) => {
   const synonimHandler = (event) => {
-    props.onChoose(event.target.value);
+    //console.log(event.target.name, event.target.value, 'is from synonim');
+    let data = event.target.name;
+    props.onChoose(data);
   };
 
   return (
-    <button key={Math.random} value={props.name} onClick={synonimHandler}>
+    <button key={Math.random} name={props.name} onClick={synonimHandler}>
       {props.name}
     </button>
   );

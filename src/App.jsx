@@ -163,9 +163,9 @@ function App() {
 
   !word && console.log(word);
 
-  const newSynonim = (event) => {
-    console.log(event.target.outerText);
-    setQuery(event.target.outerText);
+  const newSynonim = (data) => {
+    console.log(data, 'from parent');
+    //setQuery(event.target.outerText);
   };
 
   return (
