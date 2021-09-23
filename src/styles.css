@@ -7,10 +7,30 @@
 li {
   list-style-type: none;
 }
-.App {
-  text-align: center;
-  margin-top: 100px;
 
+.search {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.search input {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid;
+  padding: 20px;
+  max-height: 40px;
+  font-size: 1.1rem;
+}
+
+.search .image {
+  position: absolute;
+  height: 30px;
+  top: 5px;
+  right: 5px;
+}
+
+.App {
   width: 500px;
   height: 805px;
   border: 1px solid black;

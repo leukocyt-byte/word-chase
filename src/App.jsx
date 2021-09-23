@@ -169,7 +169,12 @@ function App() {
 
   return (
     <div className="App">
-      <section>
+      <div className="search">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Search_Icon.svg"
+          className="image"
+          alt="lookup"
+        />
         <input
           type="text"
           placeholder="SEARCH"
@@ -177,41 +182,40 @@ function App() {
           onChange={(e) => setQuery(e.target.value)}
           onKeyPress={search}
         ></input>
-      </section>
-      <section>
-        <ul>
-          {Array.from(word).map((w, index) => {
-            return (
-              <li key={index}>
-                <h3>{w.word}</h3>
-                <p>Phonetic: {w.phonetic} </p>
-                <p>Origin: {w.origin} </p>
-                <br />
-                {Array.from(w.meanings[0].definitions).map((def, index) => {
-                  return (
-                    <div key={index}>
-                      <p>
-                        <b>{def.definition}</b>
-                      </p>
-                      {Array.from(
-                        w.meanings[0].definitions[`${index}`].synonyms
-                      ).map((synonim, index) => {
-                        return (
-                          <Synonim
-                            key={index}
-                            name={synonim}
-                            onChoose={newSynonim}
-                          />
-                        );
-                      })}
-                    </div>
-                  );
-                })}
-              </li>
-            );
-          })}{' '}
-        </ul>
-      </section>
+      </div>
+
+      <ul>
+        {Array.from(word).map((w, index) => {
+          return (
+            <li key={index}>
+              <h3>{w.word}</h3>
+              <p>Phonetic: {w.phonetic} </p>
+              <p>Origin: {w.origin} </p>
+              <br />
+              {Array.from(w.meanings[0].definitions).map((def, index) => {
+                return (
+                  <div key={index}>
+                    <p>
+                      <b>{def.definition}</b>
+                    </p>
+                    {Array.from(
+                      w.meanings[0].definitions[`${index}`].synonyms
+                    ).map((synonim, index) => {
+                      return (
+                        <Synonim
+                          key={index}
+                          name={synonim}
+                          onChoose={newSynonim}
+                        />
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </li>
+          );
+        })}{' '}
+      </ul>
     </div>
   );
 }
