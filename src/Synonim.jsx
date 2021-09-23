@@ -7,7 +7,7 @@ const Synonim = (props) => {
   };
 
   return (
-    <button key={Math.random} name={props.name} onClick={synonimHandler}>
+    <button key={props.index} name={props.name} onClick={synonimHandler}>
       {props.name}
     </button>
   );

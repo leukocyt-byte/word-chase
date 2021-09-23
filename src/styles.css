@@ -4,9 +4,17 @@
   box-sizing: border-box;
 }
 
+li {
+  list-style-type: none;
+}
 .App {
   text-align: center;
   margin-top: 100px;
+
+  width: 500px;
+  height: 805px;
+  border: 1px solid black;
+  margin: 0 auto;
 }
 
 p {
