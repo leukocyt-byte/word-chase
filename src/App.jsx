@@ -13,17 +13,29 @@ function App() {
   };
 
   useEffect(() => {
-    fetch(
-      `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=${apiKey}`
-    )
-      .then((res) => res.json())
-      .then((result) => {
-        setQuery('');
-        setWord(result);
-        console.log(result);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+    if (!query) {
+      return;
+    }
+    const identifier = setTimeout(() => {
+      fetch(
+        `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=${apiKey}`
+      )
+        .then((res) => res.json())
+        .then((result) => {
+          setQuery('');
+          setWord(result);
+          console.log(result);
+        })
+        .catch((error) => console.log(error));
+    }, 700);
+
+    return () => {
+      console.log('Cleanup');
+      clearTimeout(identifier);
+    };
+  }, [query]);
+
+  !word && console.log(word);
 
   return (
     <div className="App">
