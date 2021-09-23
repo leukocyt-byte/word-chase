@@ -187,7 +187,7 @@ function App() {
       <div className="data-box">
         {Array.from(word).map((w, index) => {
           return (
-            <li key={index}>
+            <div key={index}>
               <p className="content-box">Phonetic: {w.phonetic} </p>
               <p>Origin: {w.origin} </p>
               <br />
@@ -199,13 +199,19 @@ function App() {
                       {Array.from(
                         w.meanings[0].definitions[`${index}`].synonyms
                       ).map((synonim, index) => {
-                        return <Synonim name={synonim} onChoose={newSynonim} />;
+                        return (
+                          <Synonim
+                            name={synonim}
+                            onChoose={newSynonim}
+                            key={index}
+                          />
+                        );
                       })}
                     </div>
                   </div>
                 );
               })}
-            </li>
+            </div>
           );
         })}
       </div>

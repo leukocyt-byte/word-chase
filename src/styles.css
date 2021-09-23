@@ -54,7 +54,7 @@ li {
   position: absolute;
   height: 32px;
   top: 5px;
-  right: 5px;
+  right: 10px;
 }
 
 .data-box {
@@ -71,7 +71,7 @@ button {
   text-transform: capitalize;
   background: rgb(175, 168, 168);
   padding: 10px;
-  width: 7rem;
+  width: 8rem;
   border: none;
   outline: none;
 }
