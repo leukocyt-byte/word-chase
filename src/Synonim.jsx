@@ -7,7 +7,12 @@ const Synonim = (props) => {
   };
 
   return (
-    <button key={props.index} name={props.name} onClick={synonimHandler}>
+    <button
+      key={props.index}
+      name={props.name}
+      onClick={synonimHandler}
+      className="synonim"
+    >
       {props.name}
     </button>
   );

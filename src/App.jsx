@@ -188,27 +188,20 @@ function App() {
         {Array.from(word).map((w, index) => {
           return (
             <li key={index}>
-              <h3>{w.word}</h3>
-              <p>Phonetic: {w.phonetic} </p>
+              <p className="content-box">Phonetic: {w.phonetic} </p>
               <p>Origin: {w.origin} </p>
               <br />
               {Array.from(w.meanings[0].definitions).map((def, index) => {
                 return (
                   <div key={index}>
-                    <p>
-                      <b>{def.definition}</b>
-                    </p>
-                    {Array.from(
-                      w.meanings[0].definitions[`${index}`].synonyms
-                    ).map((synonim, index) => {
-                      return (
-                        <Synonim
-                          key={index}
-                          name={synonim}
-                          onChoose={newSynonim}
-                        />
-                      );
-                    })}
+                    <p className="meaning">{def.definition}</p>
+                    <div className="button-box" key={index}>
+                      {Array.from(
+                        w.meanings[0].definitions[`${index}`].synonyms
+                      ).map((synonim, index) => {
+                        return <Synonim name={synonim} onChoose={newSynonim} />;
+                      })}
+                    </div>
                   </div>
                 );
               })}
