@@ -165,7 +165,6 @@ function App() {
 
   const newSynonim = (data) => {
     console.log(data, 'from parent');
-    //setQuery(event.target.outerText);
   };
 
   return (
@@ -194,17 +193,17 @@ function App() {
                       <p>
                         <b>{def.definition}</b>
                       </p>
-                      {Array.from(w.meanings[0].definitions[0].synonyms).map(
-                        (synonim, index) => {
-                          return (
-                            <Synonim
-                              key={index}
-                              name={synonim}
-                              onChoose={newSynonim}
-                            />
-                          );
-                        }
-                      )}
+                      {Array.from(
+                        w.meanings[0].definitions[`${index}`].synonyms
+                      ).map((synonim, index) => {
+                        return (
+                          <Synonim
+                            key={index}
+                            name={synonim}
+                            onChoose={newSynonim}
+                          />
+                        );
+                      })}
                     </div>
                   );
                 })}
