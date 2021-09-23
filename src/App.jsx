@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const apiKey = process.env.REACT_APP_API_KEY;
+//const apiKey = process.env.REACT_APP_API_KEY;
 
 function App() {
   const [query, setQuery] = useState('');
@@ -17,9 +17,7 @@ function App() {
       return;
     }
     const identifier = setTimeout(() => {
-      fetch(
-        `https://www.dictionaryapi.com/api/v3/references/thesaurus/json/${query}?key=${apiKey}`
-      )
+      fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${query}`)
         .then((res) => res.json())
         .then((result) => {
           setQuery('');
@@ -48,7 +46,24 @@ function App() {
           onKeyPress={search}
         ></input>
       </section>
-      <section></section>
+      <section>
+        {/* <ul>
+          {Array.from(word).map((w, index) => {
+            return (
+              <li key={index}>
+                <div>
+                  <div>
+                    <h3>{w.meta.id}</h3>
+                    <p>Phonetic: {w.meta.id} </p>
+                    <p>Origin: {w.meta.id} </p>
+                    <p>Definition1: {w.def[0].sseq[0][0][1].dt[0][1]}</p>
+                    <p>Definition2: {w.meta.id}</p>
+                  </div>
+                </div>
+              </li>
+            );
+          })} </ul> */}
+      </section>
     </div>
   );
 }
