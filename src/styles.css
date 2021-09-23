@@ -17,6 +17,7 @@ p {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  line-height: 2rem;
 }
 
 li {
@@ -36,6 +37,7 @@ li {
   padding: 20px;
   max-height: 40px;
   font-size: 1.1rem;
+  background-color: lightgrey;
 }
 
 .search input:focus {
@@ -69,7 +71,7 @@ li {
 
 button {
   text-transform: capitalize;
-  background: rgb(175, 168, 168);
+  background: lightgrey;
   padding: 10px;
   width: 8rem;
   border: none;
@@ -81,6 +83,11 @@ button {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px 20px;
+}
+
+.tab {
+  display: inline-block;
+  margin-left: 20px;
 }
 
 /* .synonim {

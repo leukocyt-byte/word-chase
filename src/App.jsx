@@ -188,9 +188,15 @@ function App() {
         {Array.from(word).map((w, index) => {
           return (
             <div key={index}>
-              <p className="content-box">Phonetic: {w.phonetic} </p>
-              <p>Origin: {w.origin} </p>
-              <br />
+              <p className="content-box">
+                <b>Phonetic</b>:<span className="tab" />
+                {w.phonetic}{' '}
+              </p>
+              <p>
+                <b>Origin:</b>
+                <span className="tab" />
+                {w.origin}
+              </p>
               {Array.from(w.meanings[0].definitions).map((def, index) => {
                 return (
                   <div key={index}>
