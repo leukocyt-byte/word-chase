@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Synonim from './Synonim';
 
 function App() {
   const [query, setQuery] = useState('');
@@ -162,6 +163,11 @@ function App() {
 
   !word && console.log(word);
 
+  const newSynonim = (event) => {
+    console.log(event.target.outerText);
+    setQuery(event.target.outerText);
+  };
+
   return (
     <div className="App">
       <section>
@@ -190,7 +196,13 @@ function App() {
                       </p>
                       {Array.from(w.meanings[0].definitions[0].synonyms).map(
                         (synonim, index) => {
-                          return <button key={index}>{synonim} </button>;
+                          return (
+                            <Synonim
+                              key={index}
+                              name={synonim}
+                              onChoose={newSynonim}
+                            />
+                          );
                         }
                       )}
                     </div>
