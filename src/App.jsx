@@ -5,12 +5,6 @@ function App() {
   const [query, setQuery] = useState('');
   const [word, setWord] = useState({});
 
-  const search = (e) => {
-    if (e.key === 'Enter') {
-      setQuery(e.target.value);
-    }
-  };
-
   useEffect(() => {
     if (!query) {
       return;
@@ -50,7 +44,6 @@ function App() {
           placeholder="SEARCH"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          onKeyPress={search}
         ></input>
       </div>
 
