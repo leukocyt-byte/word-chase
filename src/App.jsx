@@ -21,7 +21,7 @@ function App() {
         .then((res) => res.json())
         .then((result) => {
           setWord(result);
-          console.log(result);
+          //console.log(result);
         })
         .catch((error) => console.log(error));
     }, 700);
@@ -55,41 +55,53 @@ function App() {
       </div>
 
       <div className="data-box">
-        {Array.from(word).map((w, index) => {
-          return (
-            <div key={index}>
-              <p className="content-box">
-                <b>Phonetic</b>:<span className="tab" />
-                {w.phonetic}{' '}
-              </p>
-              <p>
-                <b>Origin:</b>
-                <span className="tab" />
-                {w.origin}
-              </p>
-              {Array.from(w.meanings[0].definitions).map((def, index) => {
-                return (
-                  <div key={index}>
-                    <p className="meaning">{def.definition}</p>
-                    <div className="button-box" key={index}>
-                      {Array.from(
-                        w.meanings[0].definitions[`${index}`].synonyms
-                      ).map((synonim, index) => {
-                        return (
-                          <Synonim
-                            name={synonim}
-                            onChoose={newSynonim}
-                            key={index}
-                          />
-                        );
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
+        {Array.from(word).title ? (
+          <p>No results found. {Array.from(word).title}</p>
+        ) : (
+          Array.from(word)
+            .slice(0, 1)
+            .map((w, index) => {
+              return (
+                <div key={index}>
+                  <p className="content-box">
+                    <b>Phonetic</b>:<span className="tab" />
+                    {w.phonetic}
+                  </p>
+                  <p>
+                    <b>Origin:</b>
+                    <span className="tab" />
+                    {w.origin}
+                  </p>
+                  {Array.from(w.meanings[0].definitions).map((def, index) => {
+                    return (
+                      <div key={index}>
+                        <p className="meaning">{def.definition}</p>
+                        <div className="button-box" key={index}>
+                          {Array.from(
+                            w.meanings[0].definitions[`${index}`].synonyms
+                          ).length > 0 ? (
+                            Array.from(
+                              w.meanings[0].definitions[`${index}`].synonyms
+                            ).map((synonim, index) => {
+                              return (
+                                <Synonim
+                                  name={synonim}
+                                  onChoose={newSynonim}
+                                  key={index}
+                                />
+                              );
+                            })
+                          ) : (
+                            <p className="no-synonim">No synonims found.</p>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })
+        )}
       </div>
     </div>
   );
