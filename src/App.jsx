@@ -31,7 +31,7 @@ function App() {
     };
   }, [query]);
 
-  !word && console.log(word);
+  //!word && console.log(word);
 
   const newSynonim = (data) => {
     setQuery(data);
