@@ -15,15 +15,11 @@ function App() {
     if (!query) {
       return;
     }
-    if (!word) {
-      return;
-    }
 
     const identifier = setTimeout(() => {
       fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${query}`)
         .then((res) => res.json())
         .then((result) => {
-          setQuery('');
           setWord(result);
           console.log(result);
         })
@@ -31,7 +27,6 @@ function App() {
     }, 700);
 
     return () => {
-      console.log('Cleanup');
       clearTimeout(identifier);
     };
   }, [query]);
