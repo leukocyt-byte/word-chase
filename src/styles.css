@@ -20,10 +20,6 @@ p {
   line-height: 2rem;
 }
 
-li {
-  list-style-type: none;
-}
-
 .search {
   position: relative;
   display: inline-block;
