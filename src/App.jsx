@@ -58,50 +58,53 @@ function App() {
           Something went wrong, check console for error.
         </p>
       )}
-      {word.title && <p className="meaning">No definitions found.</p>}
 
-      <div className="data-box">
-        {word.slice(0, 1).map((w, index) => {
-          return (
-            <div key={index}>
-              <p className="content-box">
-                <b>Phonetic</b>:<span className="tab" />
-                {w.phonetic}
-              </p>
-              <p>
-                <b>Origin:</b>
-                <span className="tab" />
-                {w.origin}
-              </p>
-              {w.meanings[0].definitions.map((def, index) => {
-                return (
-                  <div key={index}>
-                    <p className="meaning">{def.definition}</p>
-                    <div className="button-box" key={index}>
-                      {w.meanings[0].definitions[`${index}`].synonyms.length >
-                      0 ? (
-                        w.meanings[0].definitions[`${index}`].synonyms.map(
-                          (synonim, index) => {
-                            return (
-                              <Synonim
-                                name={synonim}
-                                onChoose={newSynonim}
-                                key={index}
-                              />
-                            );
-                          }
-                        )
-                      ) : (
-                        <p className="no-synonim">No synonims found.</p>
-                      )}
+      {!word.title ? (
+        <div className="data-box">
+          {word.slice(0, 1).map((w, index) => {
+            return (
+              <div key={index}>
+                <p className="content-box">
+                  <b>Phonetic</b>:<span className="tab" />
+                  {w.phonetic}
+                </p>
+                <p>
+                  <b>Origin:</b>
+                  <span className="tab" />
+                  {w.origin}
+                </p>
+                {w.meanings[0].definitions.map((def, index) => {
+                  return (
+                    <div key={index}>
+                      <p className="meaning">{def.definition}</p>
+                      <div className="button-box" key={index}>
+                        {w.meanings[0].definitions[`${index}`].synonyms.length >
+                        0 ? (
+                          w.meanings[0].definitions[`${index}`].synonyms.map(
+                            (synonim, index) => {
+                              return (
+                                <Synonim
+                                  name={synonim}
+                                  onChoose={newSynonim}
+                                  key={index}
+                                />
+                              );
+                            }
+                          )
+                        ) : (
+                          <p className="no-synonim">No synonims found.</p>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <p className="meaning">No definitions found.</p>
+      )}
     </div>
   );
 }
