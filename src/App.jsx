@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Synonim from './Synonim';
+import Synonim from './components/Synonim';
 import Spinner from './components/Spinner';
 
 function App() {
