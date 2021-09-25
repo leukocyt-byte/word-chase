@@ -6,6 +6,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [word, setWord] = useState({});
   const [loading, setLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     if (!query) {
@@ -21,7 +22,10 @@ function App() {
           setLoading(false);
           //console.log(result);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          setHasError(true);
+          console.error(error);
+        });
     }, 700);
 
     return () => {
@@ -51,6 +55,7 @@ function App() {
         ></input>
       </div>
       {loading && <Spinner />}
+      {hasError && <p>Something went wrong, check console for error.</p>}
 
       <div className="data-box">
         {Array.from(word).title ? (
