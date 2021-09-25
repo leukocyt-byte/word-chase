@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import Synonim from './Synonim';
+import Spinner from './components/Spinner';
 
 function App() {
   const [query, setQuery] = useState('');
   const [word, setWord] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!query) {
@@ -11,10 +13,12 @@ function App() {
     }
 
     const identifier = setTimeout(() => {
+      setLoading(true);
       fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${query}`)
         .then((res) => res.json())
         .then((result) => {
           setWord(result);
+          setLoading(false);
           //console.log(result);
         })
         .catch((error) => console.log(error));
@@ -46,6 +50,7 @@ function App() {
           onChange={(e) => setQuery(e.target.value)}
         ></input>
       </div>
+      {loading && <Spinner />}
 
       <div className="data-box">
         {Array.from(word).title ? (
